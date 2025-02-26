@@ -74,10 +74,10 @@ function initializeGallery(galleryItems) {
           return;
      }
     const gallery = document.querySelector(".gallery");
-    gallery.innerHTML = undefined; //Clean gallery on init
+    gallery.innerHTML = ""; //Clean gallery on init
     const galleryItemsMarkup = [];
     galleryItems.forEach(item => galleryItemsMarkup.push(
-        `li class="gallery-item"> 
+        `<li class="gallery-item"> 
             <a class="gallery-link" href="${item.original}"> 
                 <img class="gallery-image" src="${item.preview}" alt="${item.description}" /> 
             </a> 
@@ -86,3 +86,16 @@ function initializeGallery(galleryItems) {
     gallery.insertAdjacentHTML("beforeend", galleryItemsMarkup.join(""));
 }
 //#endregion Gallery DOM setup
+
+//#region connecting lightbox
+// Описаний в документації
+import SimpleLightbox from "simplelightbox";
+// Додатковий імпорт стилів
+import "simplelightbox/dist/simple-lightbox.min.css";
+//#endregion connecting lightbox
+
+initializeGallery(images);
+const lightboxGallery = new SimpleLightbox(document.querySelectorAll('.gallery a'));
+console.log(lightboxGallery);
+lightboxGallery.options.captionsData = 'alt';
+lightboxGallery.options.captionDelay = 250;
