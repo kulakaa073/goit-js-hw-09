@@ -1,3 +1,10 @@
+//#region connecting lightbox
+// Описаний в документації
+import SimpleLightbox from "simplelightbox";
+// Додатковий імпорт стилів
+import "simplelightbox/dist/simple-lightbox.min.css";
+//#endregion connecting lightbox
+
 //#region Gallery items
 const images = [
  {
@@ -87,15 +94,5 @@ function initializeGallery(galleryItems) {
 }
 //#endregion Gallery DOM setup
 
-//#region connecting lightbox
-// Описаний в документації
-import SimpleLightbox from "simplelightbox";
-// Додатковий імпорт стилів
-import "simplelightbox/dist/simple-lightbox.min.css";
-//#endregion connecting lightbox
-
 initializeGallery(images);
-const lightboxGallery = new SimpleLightbox(document.querySelectorAll('.gallery a'));
-console.log(lightboxGallery);
-lightboxGallery.options.captionsData = 'alt';
-lightboxGallery.options.captionDelay = 250;
+const lightboxGallery = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250 });
